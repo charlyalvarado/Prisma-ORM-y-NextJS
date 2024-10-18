@@ -1,0 +1,17 @@
+datasource db {
+  provider = "sqlite" // O puedes usar PostgreSQL, MySQL, etc.
+  url      = "file:./dev.db" // Para SQLite
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id       Int      @id @default(autoincrement())
+  code     String   @unique
+  name     String
+  price    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
